@@ -244,10 +244,7 @@ def sample_multi_entities(graph):
         if edge[1] == relation:
             st_node.append(edge[0])
 
-    num = random.randint(3, 7)
-    entities = random.sample(st_node, min(num, len(st_node)))
-
-    return entities
+    return st_node
 
 output_file = 'set_setting.jsonl'
 graph_file = ['/graphs/new_graphs.jsonl']
@@ -264,6 +261,7 @@ with jsonlines.open(output_file, mode='a') as writer:
     for item in graphs:
         id = item['id']
         graph = item['graph']
+        answer = sample_multi_entities(graph)
 
         for k in range(6):
             question, topic_entities, edges = generate_set(graph, answer, k)

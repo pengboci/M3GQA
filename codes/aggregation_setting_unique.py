@@ -284,10 +284,7 @@ def sample_multi_entities(graph):
         if edge[1] == relation:
             st_node.append(edge[0])
 
-    num = random.randint(3, 7)
-    entities = random.sample(st_node, min(num, len(st_node)))
-
-    return entities
+    return st_node
 
 output_file = 'aggregation_setting_unique.jsonl'
 graph_file = ['/graphs/new_graphs.jsonl']
